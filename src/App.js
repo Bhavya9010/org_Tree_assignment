@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import PersonList from './components/PersonList';
+import PersonForm from './components/PersonForms';
+import PersonDetail from './components/PersonDetail';
+import TreeView from './components/TreeView';
 
-function App() {
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<PersonList />} />
+        <Route path="/add" element={<PersonForm />} />
+        <Route path="/edit/:id" element={<PersonForm />} />
+        <Route path="/view/:id" element={<PersonDetail />} />
+        <Route path="/tree" element={<TreeView />} />
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;
